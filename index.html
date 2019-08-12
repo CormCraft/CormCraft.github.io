@@ -4,30 +4,45 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <title>CormCraft</title>
 <style>
-body {margin: 0px; height: 1000px; padding: 0px;}
+@font-face {
+	font-family: "Minecraft";
+	font-style: normal;
+	font-weight: 400;
+	src: url("minecraft_font.ttf") format("truetype")
+}
+body {margin: 0px; height: 1000px; padding: 0px; color: white; font-family: "Minecraft";}
 .sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: rgb(26, 46, 89);
+  background-color: #0c1a36;
   color:white;
+  width: 100%;
 }
+#tab {width: 100%;}
 #top {
   padding: 0px;
   height: 100px;
-  background: red;
+  background: #0c1a36;
   top: 0px;
   margin: 0px;
 }
 #p {margin: 0px;}
-
+td {width: 25%; text-align: center;}
 </style>
 </head>
 <body>
 
 <div id="top"><p id="p">hi</p></div>
 
-<div class="sticky"><table><tr><td>hi</td></tr></table></div>
+<div class="sticky">
+<table id="tab"><tr>
+<td><a>GUI</a></td>
+<td><a>Custom Blocks</a></td>
+<td><a>Colorable Swords</a></td>
+<td><a>Custom Panorama</a></td>
+</tr></table>
+</div>
 
 </body>
 </html>
