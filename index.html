@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="icon" href="favicon.png" type="image/png">
 <title>CormCraft</title>
 <style>
 @font-face {
@@ -10,7 +10,7 @@
 	font-weight: 400;
 	src: url("minecraft_font.ttf") format("truetype")
 }
-body {margin: 0px; height: 1000px; padding: 0px; color: white; font-family: "Minecraft";}
+body {margin: 0px; height: 1000px; padding: 0px; color: white; font-family: "Minecraft"; text-aign: center;}
 .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -18,31 +18,34 @@ body {margin: 0px; height: 1000px; padding: 0px; color: white; font-family: "Min
   background-color: #0c1a36;
   color:white;
   width: 100%;
+  padding: 5px;
+  font-size:18px;
 }
 #tab {width: 100%;}
 #top {
   padding: 0px;
-  height: 100px;
+  height: 130px;
   background: #0c1a36;
   top: 0px;
   margin: 0px;
-}
-#p {margin: 0px;}
+  text-align: center;
+  border-bottom: 3px solid white;
+  }
+#p {margin: 0px; font-size: 100px;}
 td {width: 25%; text-align: center;}
 </style>
 </head>
-<body>
+<body data-gr-c-s-loaded="true">
 
-<div id="top"><p id="p">hi</p></div>
+<div id="top"><p id="p">CormCraft</p></div>
 
 <div class="sticky">
-<table id="tab"><tr>
+<table id="tab"><tbody><tr>
 <td><a>GUI</a></td>
 <td><a>Custom Blocks</a></td>
 <td><a>Colorable Swords</a></td>
 <td><a>Custom Panorama</a></td>
-</tr></table>
+</tr></tbody></table>
 </div>
-
 </body>
 </html>
