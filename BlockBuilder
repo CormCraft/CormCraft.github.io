@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CormCraft block maker</title>
+<style>
+#span1 {width: 400px; height:200px; y-overflow:scroll; x-overflow: hidden;}
+</style>
+</head>
+<body>
+
+<p>Layer 1:</p>
+<select name="l1" id="l1">
+<option value="1">Clay</option>
+<option value="2">Old Diamond Block</option>
+<option value="3">Dirt</option>
+<option value="4">End Stone</option>
+<option value="5">Grass Block Top</option>
+<option value="6">Terracota</option>
+<option value="7">Log Side</option>
+<option value="8">Log Top</option>
+<option value="9">Prismarine</option>
+<option value="10">Sand</option>
+<option value="11">Sandstone Bottom</option>
+<option value="12">Stone</option>
+<option value="13">Andesite</option>
+<option value="37">Wool</option>
+<option value="38">Normal Log</option>
+<option value="39">New Diamond Block</option>
+</select>
+<input type="color" name="hex" id="hex">
+<p>Layer 2:</p>
+<select name="l2" id="l2">
+<option value="40">None</option>
+<option value="14">Daylight Sensor Bottom</option>
+<option value="15">Daylight Sensor Top</option>
+<option value="16">Emerald Block Old</option>
+<option value="17">Emerald Ore</option>
+<option value="18">End Stone Brick</option>
+<option value="19">Iron Ore</option>
+<option value="20">Lapis Ore</option>
+<option value="21">Nether Brick</option>
+<option value="22">Old Obsidian</option>
+<option value="23">Wooden Planks</option>
+<option value="24">Prismarine Brick</option>
+<option value="25">Dark Prismarine</option>
+<option value="26">Purpur Brick</option>
+<option value="27">Purpur Pillar</option>
+<option value="28">Chisled Quartz</option>
+<option value="29">Quartz Pillar</option>
+<option value="30">Quartz ore</option>
+<option value="31">Stone Outline</option>
+<option value="32">Stone Brick</option>
+<option value="33">Chisled Stone Brick</option>
+</select>
+<input type="color" name="hex2" id="hex2">
+<p>Layer 3:</p>
+<select name="l3" id="l3">
+<option value="40">None</option>
+<option value="34">Grass Block</option>
+<option value="35">Mycelium Block</option>
+<option value="36">Vines</option>
+<option value="41">Glass</option>
+<option value="42">Ladder</option>
+<option value="43">Iron Bars</option>
+</select>
+<input type="color" name="hex3" id="hex3"><br>
+<p>Block Name:</p><input type="text" name="name" id="name" value="Custom Block"><br>
+<br>
+<button onclick="copyText()">Copy Command</button><br>
+<textarea id="span1" spellcheck="false"></textarea>
+
+<script>
+var l1 = document.querySelector("#l1");
+var l2 = document.querySelector("#l2");
+var l3 = document.querySelector("#l3");
+var hex = document.querySelector("#hex");
+var hex2 = document.querySelector("#hex2");
+var hex3 = document.querySelector("#hex3");
+var story = document.querySelector("#story");
+
+setInterval(function myFunction() {
+var name = document.querySelector("#name");
+var str = document.getElementById("hex").value;
+  var res = str.replace("#", "");
+var str2 = document.getElementById("hex2").value;
+  var res2 = str2.replace("#", "");
+var str3 = document.getElementById("hex3").value;
+  var res3 = str3.replace("#", "");
+  var dec = "/give @p minecraft:command_block{BlockEntityTag:{auto: 1b, Command: '/setblock ~ ~ ~ minecraft:spawner{MaxNearbyEntities:1,RequiredPlayerRange:0,SpawnData:{id:\"minecraft:armor_stand\",Invisible:1,Marker:1,ShowArms:1,HandItems:[{id:\"minecraft:leather_boots\",Count:1b,Damage:1s,tag:{Unbreakable:1, CustomModelData:" + l2.value + ",display:{color:" + parseInt(res2,16) + "}}},{id:\"minecraft:leather_boots\",Count:1b,Damage:1s,tag:{Unbreakable:1, CustomModelData:" + l3.value + ",display:{color:" + parseInt(res3,16) + "}}}],ArmorItems:[{},{},{},{id:\"minecraft:leather_boots\",Count:1b,tag:{Unbreakable:1, CustomModelData:" + l1.value + ",display:{color:" + parseInt(res,16) + "}}}]}}'},display:{Name:\"{\\\"text\\\":\\\"" + name.value + "\\\",\\\"color\\\":\\\"white\\\",\\\"italic\\\":false}\"},CustomModelData:1}";
+  document.getElementById("span1").innerHTML = dec;
+}, 10);
+
+function copyText() {
+  var copyText = document.getElementById("span1");
+  copyText.select();
+  document.execCommand("copy");
+}
+
+
+</script>
+</body>
+</html>
