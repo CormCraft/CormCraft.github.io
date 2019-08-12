@@ -1,40 +1,32 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script>
-var fixmeTop = $('.fixme').offset().top;
-$(window).scroll(function() {
-    var currentScroll = $(window).scrollTop();
-    if (currentScroll >= fixmeTop) {
-        $('.fixme').css({
-            position: 'fixed',
-            top: '0',
-            left: '0'
-        });
-    } else {
-        $('.fixme').css({
-            position: 'static'
-        });
-    }
-});
-</script>
-</head>
-<title>JavaScipt Example</title>
+<title>CormCraft</title>
 <style>
-body { height: 3000px; margin:0px;}
-.content { height: 500px; }
-.fixme { background: green; color: white; text-align: center; width: 100%; }
-.links {}
-body { height: 3000px; margin:0px;}
+body {margin: 0px; height: 1000px; padding: 0px;}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: rgb(26, 46, 89);
+  color:white;
+}
+#top {
+  padding: 0px;
+  height: 100px;
+  background: red;
+  top: 0px;
+  margin: 0px;
+}
+
 </style>
 </head>
-
 <body>
 
-<div class="content"></div>
-<div class="fixme">Scroll here</div>
+<div id="top"><p id="p">hi</p></div>
+
+<div class="sticky"><table><tr><td>hi</td></tr></table></div>
+
 </body>
 </html>
