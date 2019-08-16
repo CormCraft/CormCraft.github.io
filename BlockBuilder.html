@@ -2,13 +2,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CormCraft block maker</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<title>CormCraft Block Builder</title>
 <style>
+@font-face {
+	font-family: "Minecraft";
+	font-style: normal;
+	font-weight: 400;
+	src: url("minecraft_font.ttf") format("truetype")
+}
+body {color: white; background: black;}
 #span1 {width: 400px; height:200px; y-overflow:scroll; x-overflow: hidden;}
+input, textarea, button, option, select {background: #000040; color: white; border: 2px ridge #000091;}
+button {border-bottom: 0px solid #000;}
+.side1 {
+  transform: skewY(-33deg);
+  position: absolute;
+  right: 10px;
+  top: 100px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  -webkit-mask-size: 100px 100px;
+  background-blend-mode: multiply;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  }
+  
+.side2 {
+  transform: skewY(33deg);
+  position: absolute;
+  right: 110px;
+  top: 100px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  -webkit-mask-size: 100px 100px;
+  background-blend-mode: multiply;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  }
+  
+.side3 {
+transform: rotate(135deg) skew(12deg, 12deg) scale(1.005);
+  position: absolute;
+  right: 52px;
+  top: 9px;
+  display: inline-block;
+  width: 117px;
+  height: 117px;
+  margin: 25px;
+  -webkit-mask-size: 117px 117px;
+  background-blend-mode: multiply;
+  background-size: 117px 117px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  }
+  
+
 </style>
 </head>
 <body>
-
+<input type="text" hidden value="" id="l3top" name="l3top">
 <p>Layer 1:</p>
 <select name="l1" id="l1">
 <option value="1">Clay</option>
@@ -28,7 +90,7 @@
 <option value="38">Normal Log</option>
 <option value="39">New Diamond Block</option>
 </select>
-<input type="color" name="hex" id="hex">
+<input type="color" name="hex" id="hex" value="#ffffff">
 <p>Layer 2:</p>
 <select name="l2" id="l2">
 <option value="40">None</option>
@@ -53,7 +115,7 @@
 <option value="32">Stone Brick</option>
 <option value="33">Chisled Stone Brick</option>
 </select>
-<input type="color" name="hex2" id="hex2">
+<input type="color" name="hex2" id="hex2" value="#ffffff">
 <p>Layer 3:</p>
 <select name="l3" id="l3">
 <option value="40">None</option>
@@ -64,11 +126,25 @@
 <option value="42">Ladder</option>
 <option value="43">Iron Bars</option>
 </select>
-<input type="color" name="hex3" id="hex3"><br>
+<input type="color" name="hex3" id="hex3" value="#ffffff"><br>
 <p>Block Name:</p><input type="text" name="name" id="name" value="Custom Block"><br>
 <br>
 <button onclick="copyText()">Copy Command</button><br>
 <textarea id="span1" spellcheck="false"></textarea>
+
+<div></div>
+
+<div id="div1" class="side1"></div>
+<div id="div2" class="side1"></div>
+<div id="div3" class="side1"></div>
+
+<div id="div4" class="side2"></div>
+<div id="div5" class="side2"></div>
+<div id="div6" class="side2"></div>
+
+<div id="div7" class="side3"></div>
+<div id="div8" class="side3"></div>
+<div id="div9" class="side3"></div>
 
 <script>
 var l1 = document.querySelector("#l1");
@@ -78,6 +154,8 @@ var hex = document.querySelector("#hex");
 var hex2 = document.querySelector("#hex2");
 var hex3 = document.querySelector("#hex3");
 var story = document.querySelector("#story");
+var l3top = document.querySelector("#l3top");
+
 
 setInterval(function myFunction() {
 var name = document.querySelector("#name");
@@ -87,16 +165,47 @@ var str2 = document.getElementById("hex2").value;
   var res2 = str2.replace("#", "");
 var str3 = document.getElementById("hex3").value;
   var res3 = str3.replace("#", "");
+
   var dec = "/give @p minecraft:command_block{BlockEntityTag:{auto: 1b, Command: '/setblock ~ ~ ~ minecraft:spawner{MaxNearbyEntities:1,RequiredPlayerRange:0,SpawnData:{id:\"minecraft:armor_stand\",Invisible:1,Marker:1,ShowArms:1,HandItems:[{id:\"minecraft:leather_boots\",Count:1b,Damage:1s,tag:{Unbreakable:1, CustomModelData:" + l2.value + ",display:{color:" + parseInt(res2,16) + "}}},{id:\"minecraft:leather_boots\",Count:1b,Damage:1s,tag:{Unbreakable:1, CustomModelData:" + l3.value + ",display:{color:" + parseInt(res3,16) + "}}}],ArmorItems:[{},{},{},{id:\"minecraft:leather_boots\",Count:1b,tag:{Unbreakable:1, CustomModelData:" + l1.value + ",display:{color:" + parseInt(res,16) + "}}}]}}'},display:{Name:\"{\\\"text\\\":\\\"" + name.value + "\\\",\\\"color\\\":\\\"white\\\",\\\"italic\\\":false}\"},CustomModelData:1}";
   document.getElementById("span1").innerHTML = dec;
 }, 10);
+
+setInterval(function myFunctionThree() {
+    if (l3.value == '34') 
+    {
+    l3top.value = "1_2";
+    }
+    
+    else if (l3.value == '35') 
+    {
+    l3top.value = "2_2";
+    }
+
+    else 
+    {
+    l3top.value = l3.value;
+    }
+
+  }, 10); 
+  
+setInterval(function myFunctionTwo() {
+        document.getElementById('div1').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-color: " + hex.value + ";z-index:2;");
+        document.getElementById('div2').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-color: " + hex2.value + ";z-index:3;");        
+        document.getElementById('div3').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-color: " + hex3.value + ";z-index:4;");
+        document.getElementById('div4').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-color: " + hex.value + ";z-index:2;");
+        document.getElementById('div5').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-color: " + hex2.value + ";z-index:3;");        
+        document.getElementById('div6').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-color: " + hex3.value + ";z-index:4;");
+        document.getElementById('div7').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-color: " + hex.value + ";z-index:2;");
+        document.getElementById('div8').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-color: " + hex2.value + ";z-index:3;");        
+        document.getElementById('div9').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l3_" + l3top.value + ".png);background-image:url(https://cormcraft.github.io/images/l3_" + l3top.value + ".png);background-color: " + hex3.value + ";z-index:4;");
+  }, 10); 
+
 
 function copyText() {
   var copyText = document.getElementById("span1");
   copyText.select();
   document.execCommand("copy");
 }
-
 
 </script>
 </body>
