@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@ input:focus, textarea:focus, button:focus, option:focus, select:focus {outline-o
 
 textarea {resize: none;}
 
-button {border-bottom: 0px solid #000;}
+#button {border-bottom: 0px solid #000;}
 
 .side1 {
   transform: skewY(-33deg);
@@ -93,7 +94,7 @@ transform: rotate(135deg) skew(12deg, 12deg) scale(1.002);
 
 </style>
 </head>
-<body>
+<body onload="myFunctionTwo()">
 <input type="text" hidden value="" id="l3top" name="l3top">
 <input type="text" hidden value="" id="l1top" name="l1top">
 <p>Layer 1:</p>
@@ -154,7 +155,8 @@ transform: rotate(135deg) skew(12deg, 12deg) scale(1.002);
 <input type="color" name="hex3" id="hex3" value="#ffffff"><br>
 <p>Block Name:</p><input type="text" name="name" id="name" value="Custom Block"><br>
 <br>
-<button onclick="copyText()">Copy Command</button><br>
+<button onclick="myFunctionTwo()">Update Block View</button><br><br>
+<button onclick="copyText()" id="button">Copy Command</button><br>
 <textarea id="span1" spellcheck="false"></textarea>
 
 <div></div>
@@ -227,7 +229,10 @@ setInterval(function myFunctionFour() {
 
   }, 10);
   
-setInterval(function myFunctionTwo() {
+
+  
+//setInterval(
+function myFunctionTwo() {
         document.getElementById('div1').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-image:url(https://cormcraft.github.io/images/l1_" + l1.value + ".png);background-color: " + hex.value + ";z-index:2;");
         document.getElementById('div2').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-color: " + hex2.value + ";z-index:3;");        
         document.getElementById('div3').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-image:url(https://cormcraft.github.io/images/l3_" + l3.value + ".png);background-color: " + hex3.value + ";z-index:4;");
@@ -237,7 +242,8 @@ setInterval(function myFunctionTwo() {
         document.getElementById('div7').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l1_" + l1top.value + ".png);background-image:url(https://cormcraft.github.io/images/l1_" + l1top.value + ".png);background-color: " + hex.value + ";z-index:2;");
         document.getElementById('div8').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-image:url(https://cormcraft.github.io/images/l2_" + l2.value + ".png);background-color: " + hex2.value + ";z-index:3;");        
         document.getElementById('div9').setAttribute("style", "-webkit-mask-image:url(https://cormcraft.github.io/images/l3_" + l3top.value + ".png);background-image:url(https://cormcraft.github.io/images/l3_" + l3top.value + ".png);background-color: " + hex3.value + ";z-index:4;");
-  }, 10); 
+  }
+  //, 10); 
 
 
 function copyText() {
